@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Visited Cities</title>
+    <style>
+        body {
+            background-color: lightgray;
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        table {
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Visited Cities</h1>
+
+    <form action="/add" method="POST">
+        <table>
+            <tr>
+                <td><label for="city">City:</label></td>
+                <td><input type="text" name="city" required></td>
+            </tr>
+            <tr>
+                <td><label for="date">Date of Visit:</label></td>
+                <td><input type="date" name="date" required></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;"><input type="submit" value="Add"></td>
+            </tr>
+        </table>
+    </form>
+
+    <br>
+
+    <table>
+        <tr>
+            <th>City</th>
+            <th>Date of Visit</th>
+        </tr>
+        {% for city in cities %}
+        <tr>
+            <td>{{ city.name }}</td>
+            <td>{{ city.visit_date.strftime('%Y-%m-%d') }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
